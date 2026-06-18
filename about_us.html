@@ -138,10 +138,16 @@
             cursor: pointer; /* Tells desktop users it is clickable! */
         }
 
-        /* Adds the wink on desktop hover OR mobile tap */
-        .left-panel:hover, 
+        /* 1. Mobile Tap Toggle (Controlled by your HTML onclick) */
         .left-panel.wink-active { 
             background-image: url('images/leong-wink.png'); 
+        }
+
+        /* 2. Desktop Hover (Only activates if the device has a physical mouse) */
+        @media (hover: hover) {
+            .left-panel:hover { 
+                background-image: url('images/leong-wink.png'); 
+            }
         }
 
         /* --- Right Panel: Text Content --- */
