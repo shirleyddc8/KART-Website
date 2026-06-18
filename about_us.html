@@ -143,12 +143,11 @@
             background-image: url('images/leong-wink.png'); 
         }
 
-        /* 2. Desktop Hover (Only activates if the device has a physical mouse) */
-        @media (hover: hover) {
+        /* 2. Desktop Hover (Completely hidden from handphones!) */
+        @media screen and (min-width: 769px) {
             .left-panel:hover { 
                 background-image: url('images/leong-wink.png'); 
             }
-        }
 
         /* --- Right Panel: Text Content --- */
         .right-panel { 
