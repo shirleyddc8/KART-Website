@@ -264,7 +264,7 @@
         // Initialize first view
         updateCarousel();
 
-        // 1. Scroll Navigation
+        // 1. Scroll Navigation (Desktop Mouse/Trackpad)
         window.addEventListener('wheel', (e) => {
             if (e.deltaY > 0) {
                 currentIndex = Math.min(currentIndex + 1, cards.length - 1);
@@ -273,6 +273,39 @@
             }
             updateCarousel();
         });
+
+        // ==========================================
+        // === NEW: MOBILE TOUCH SWIPE LOGIC ===
+        // ==========================================
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        // Detect when the finger touches the screen
+        window.addEventListener('touchstart', e => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+
+        // Detect when the finger leaves the screen
+        window.addEventListener('touchend', e => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+
+        // Calculate the math to see if it was a swipe up or swipe down
+        function handleSwipe() {
+            const swipeDistance = touchStartY - touchEndY;
+            const sensitivity = 40; // The finger must move at least 40px to count as a swipe
+
+            if (swipeDistance > sensitivity) {
+                // Swiped UP (Go to the next video)
+                currentIndex = Math.min(currentIndex + 1, cards.length - 1);
+                updateCarousel();
+            } else if (swipeDistance < -sensitivity) {
+                // Swiped DOWN (Go to the previous video)
+                currentIndex = Math.max(currentIndex - 1, 0);
+                updateCarousel();
+            }
+        }
 
         // 2. Click Logic (Navigate or Fullscreen)
         cards.forEach((card, index) => {
