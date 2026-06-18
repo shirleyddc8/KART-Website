@@ -296,7 +296,7 @@
         /* ========================================== */
         /* === CSS: MOBILE RESPONSIVENESS (HANDPHONE) === */
         /* ========================================== */
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             body { 
                 overflow-y: auto; 
                 overflow-x: hidden; 
@@ -329,11 +329,14 @@
                 top: 30px;
             }
 
-            .left-panel { 
+            /* --- Mobile Image Fix (Phones Only!) --- */
+            .left-panel,
+            .left-panel.turn-active { 
                 flex: none; 
                 width: 100%; 
-                height: 50vh; 
-                background-position: center top; 
+                height: 45vh; 
+                background-size: contain; /* Shrinks the image so the head and text fit perfectly */
+                background-position: center bottom; 
             }
 
             .right-panel { 
