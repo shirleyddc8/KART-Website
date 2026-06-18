@@ -140,17 +140,20 @@
             cursor: pointer; 
         }
 
-        /* Hover (Desktop) and Tap (Mobile) triggers the image swap */
-        .left-panel:hover, 
+        /* 1. Mobile Tap Toggle (Controlled by your HTML onclick) */
         .left-panel.turn-active { 
             background-image: url('images/leong-backturn.png'); 
-            
-            /* INCREASE this number to make him bigger */
-            /* Bump this up from 72% to 85% or 90% */
             background-size: 78%; 
-            
-            /* Keep adjusting this if he needs to move up or down after resizing */
             background-position: center 62%; 
+        }
+
+        /* 2. Desktop Hover (Only activates if the device has a physical mouse) */
+        @media (hover: hover) {
+            .left-panel:hover { 
+                background-image: url('images/leong-backturn.png'); 
+                background-size: 78%; 
+                background-position: center 62%; 
+            }
         }
 
         /* --- Right Panel: Form Area --- */
