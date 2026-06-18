@@ -147,8 +147,8 @@
             background-position: center 62%; 
         }
 
-        /* 2. Desktop Hover (Only activates if the device has a physical mouse) */
-        @media (hover: hover) {
+        /* 2. Desktop Hover (Completely hidden from handphones!) */
+        @media screen and (min-width: 769px) {
             .left-panel:hover { 
                 background-image: url('images/leong-backturn.png'); 
                 background-size: 78%; 
